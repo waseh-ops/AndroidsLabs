@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText emailET;
     private EditText passET;
     private Button loginBtn;
+    private Button goToChat;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
     public final static String SP_NAME = "SharePreference_File";
@@ -46,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent goToProfile = new Intent(MainActivity.this,ProfileActivity.class);
                 goToProfile.putExtra(EMAIL_INTENT_KEY,emailET.getText().toString());
                 startActivity(goToProfile);
+            }
+        });
+
+        goToChat = findViewById(R.id.goToChat);
+        goToChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToChatRoom = new Intent(MainActivity.this,ChatRoomActivity.class);
+                startActivity(goToChatRoom);
             }
         });
 
