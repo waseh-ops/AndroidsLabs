@@ -11,7 +11,22 @@
     <string name="switch_on">The Switch is now ON</string>
     <string name="switch_off">The Switch is now Off</string>
     <string name="undo">Undo</string>
-    <string name="goToChat">parti a la parler</string>
+    <string name="goToChat">Go to chat</string>
+    <string name="email_Text">Enter your email address:</string>
+    <string name="emailInput">Type your email here</string>
+    <string name="pass_Text">Type your password</string>
+    <string name="loginBtn">LOGIN</string>
+    <string name="profile">Your profile</string>
+    <string name="name">Your Name:</string>
+    <string name="name_input">Enter your name</string>
+    <string name="email">Your Email:</string>
+    <string name="picture">Your picture:</string>
+    <string name="pic_Text">Click button above to take a picture</string>
+    <string name="sendBtn">Send</string>
+    <string name="inputBox">Chat here</string>
+    <string name="receiveBtn">Receive</string>
+
+
 
 
 

@@ -20,19 +20,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:text="Send"/>
+            android:text="@string/sendBtn"/>
         <EditText
             android:id="@+id/inputBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/sendBtn"
             android:layout_toLeftOf="@id/receiveBtn"
-            android:hint="chat here"/>
+            android:hint="@string/inputBox"/>
         <Button
             android:id="@+id/receiveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="Receive"/>
+            android:text="@string/receiveBtn"/>
     </RelativeLayout>
 </RelativeLayout>

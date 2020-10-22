@@ -12,5 +12,25 @@
     <string name="switch_on">Tl’interrupteur est maintenant allumé</string>
     <string name="switch_off">l’interrupteur est maintenant éteint</string>
     <string name="undo">Annuler</string>
-    <string name="goToChat">Go to Chat</string>
+    <string name="goToChat">Aller au Chat</string>
+    <string name="email_Text">Entrez votre adresse email:</string>
+    <string name="emailInput">Tapez votre email ici</string>
+    <string name="pass_Text">tapez votre mot de passe</string>
+    <string name="loginBtn">identifier</string>
+    <string name="profile">Votre profil</string>
+    <string name="name">votre nom:</string>
+    <string name="name_input">Entrez votre nom</string>
+    <string name="email">Votre Email:</string>
+    <string name="picture">Ta photo:</string>
+    <string name="pic_Text">Cliquez sur le bouton ci-dessus pour prendre une photo</string>
+    <string name="sendBtn">Envoyer</string>
+    <string name="inputBox">Discutez ici</string>
+    <string name="receiveBtn">Recevoir</string>
+
+
+
+
+
+
+
 </resources>

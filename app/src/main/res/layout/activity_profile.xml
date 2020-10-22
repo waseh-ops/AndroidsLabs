@@ -8,28 +8,32 @@
     tools:context=".ProfileActivity">
 
     <TextView
+        android:id="@+id/profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your profile"/>
+        android:text="@string/profile"/>
     <TextView
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your name:"/>
+        android:text="@string/name"/>
     <EditText
         android:id="@+id/name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your name"
+        android:hint="@string/name_input"
         />
     <TextView
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your email:"/>
+        android:text="@string/email"/>
     <EditText
         android:id="@+id/emailInputProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
+        android:id="@+id/picture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Your picture:"/>
@@ -40,10 +44,10 @@
         android:src="@android:drawable/picture_frame"
     />
     <TextView
-
+        android:id="@+id/pic_Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Click button above to take a picture"/>
+        android:text="@string/pic_Text"/>
     <Button
         android:id="@+id/goToChat"
         android:layout_width="match_parent"
