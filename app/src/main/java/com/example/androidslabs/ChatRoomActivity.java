@@ -1,11 +1,14 @@
 package com.example.androidslabs;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -36,6 +39,22 @@ public class ChatRoomActivity extends AppCompatActivity  {
 
         MyAdapter myAdapter = new MyAdapter();
         messageList.setAdapter(myAdapter);
+
+        messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(ChatRoomActivity.this);
+                builder.setMessage("Do you want to delete this? the selected row is "+position)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                messages.remove(position);
+                                myAdapter.notifyDataSetChanged();
+                            }
+                        });
+                builder.create().show();
+            }
+        });
 
         receiveBtn.setOnClickListener(new View.OnClickListener() {
             @Override

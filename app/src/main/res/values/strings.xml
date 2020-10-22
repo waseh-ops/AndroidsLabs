@@ -11,6 +11,8 @@
     <string name="switch_on">The Switch is now ON</string>
     <string name="switch_off">The Switch is now Off</string>
     <string name="undo">Undo</string>
+    <string name="goToChat">parti a la parler</string>
+
 
 
 </resources>

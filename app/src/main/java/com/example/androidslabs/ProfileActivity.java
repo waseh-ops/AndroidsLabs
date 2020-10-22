@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -21,6 +22,7 @@ public class ProfileActivity extends AppCompatActivity {
     EditText emailET;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    Button goToChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,15 @@ public class ProfileActivity extends AppCompatActivity {
 
                 dispatchTakePictureIntent();
 
+            }
+        });
+
+        goToChat = findViewById(R.id.goToChat);
+        goToChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToChatRoom = new Intent(ProfileActivity.this,ChatRoomActivity.class);
+                startActivity(goToChatRoom);
             }
         });
     }

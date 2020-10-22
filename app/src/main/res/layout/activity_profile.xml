@@ -40,8 +40,14 @@
         android:src="@android:drawable/picture_frame"
     />
     <TextView
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Click button above to take a picture"/>
+    <Button
+        android:id="@+id/goToChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/goToChat"/>
 
 </LinearLayout>

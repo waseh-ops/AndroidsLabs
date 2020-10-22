@@ -31,10 +31,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="LOGIN"/>
-    <Button
-        android:id="@+id/goToChat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Go To Chat"/>
+
 
 </LinearLayout>

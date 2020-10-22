@@ -12,4 +12,5 @@
     <string name="switch_on">Tl’interrupteur est maintenant allumé</string>
     <string name="switch_off">l’interrupteur est maintenant éteint</string>
     <string name="undo">Annuler</string>
+    <string name="goToChat">Go to Chat</string>
 </resources>
