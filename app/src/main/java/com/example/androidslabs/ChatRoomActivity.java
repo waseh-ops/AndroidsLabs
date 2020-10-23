@@ -44,7 +44,7 @@ public class ChatRoomActivity extends AppCompatActivity  {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(ChatRoomActivity.this);
-                builder.setMessage("Do you want to delete this? the selected row is "+position)
+                builder.setMessage("Do you want to delete this message? the selected row is "+position)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -102,20 +102,21 @@ public class ChatRoomActivity extends AppCompatActivity  {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if(convertView==null){
+            View view = convertView;
+
                 LayoutInflater inflater =getLayoutInflater();
                 Message message = messages.get(position);
                 if(message.isSent()){
-                    convertView = inflater.inflate(R.layout.sender_layout, null);
-                    TextView sendMsgTv = convertView.findViewById(R.id.sendMsg);
+                    view = inflater.inflate(R.layout.sender_layout, null);
+                    TextView sendMsgTv = view.findViewById(R.id.sendMsg);
                     sendMsgTv.setText(message.getContent());
                 }else{
-                    convertView = inflater.inflate(R.layout.receiver_layout, null);
-                    TextView receiveMsgTv = convertView.findViewById(R.id.receiveMsg);
+                    view = inflater.inflate(R.layout.receiver_layout, null);
+                    TextView receiveMsgTv = view.findViewById(R.id.receiveMsg);
                     receiveMsgTv.setText(message.getContent());
                 }
-            }
-            return convertView;
+
+            return view;
         }
     }
 }
