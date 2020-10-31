@@ -15,6 +15,6 @@
         android:id="@+id/sendMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/senderIcon"/>
+        android:layout_toRightOf="@id/senderIcon"/>
 
 </RelativeLayout>
