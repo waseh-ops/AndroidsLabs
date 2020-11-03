@@ -6,6 +6,8 @@ public class Message {
     private String content;
     private boolean isSent;
 
+    public Message(){}
+
     public Message(long id, String content, boolean isSent) {
         this.id = id;
         this.content = content;
@@ -36,4 +38,12 @@ public class Message {
         isSent = sent;
     }
 
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", isSent=" + isSent +
+                '}';
+    }
 }

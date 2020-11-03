@@ -25,12 +25,14 @@ public class ChatRoomActivity extends AppCompatActivity  {
     EditText inputBox;
     ArrayList<Message> messages;
     ListView messageList;
+    MySqliteHelper sqliteHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
-        messages = new ArrayList<>();
+        sqliteHelper = new MySqliteHelper(getApplicationContext());
+        messages = sqliteHelper.getAllMessage() ;
 
         receiveBtn = findViewById(R.id.receiveBtn);
         sendBtn = findViewById(R.id.sendBtn);
@@ -48,7 +50,10 @@ public class ChatRoomActivity extends AppCompatActivity  {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                messages.remove(position);
+//                                messages.remove(position);
+                                Message messageToBeDeleted = messages.get(position);
+                                sqliteHelper.deleteMessage(messageToBeDeleted);
+                                messages = sqliteHelper.getAllMessage();
                                 myAdapter.notifyDataSetChanged();
                             }
                         });
@@ -64,7 +69,9 @@ public class ChatRoomActivity extends AppCompatActivity  {
                 Message msg = new Message();
                 msg.setSent(false);
                 msg.setContent(content);
-                messages.add(msg);
+//                messages.add(msg);
+                sqliteHelper.insertMessage(msg);
+                messages = sqliteHelper.getAllMessage();
                 myAdapter.notifyDataSetChanged();
             }
         });
@@ -77,7 +84,9 @@ public class ChatRoomActivity extends AppCompatActivity  {
                 Message msg = new Message();
                 msg.setSent(true);
                 msg.setContent(content);
-                messages.add(msg);
+//                messages.add(msg);
+                sqliteHelper.insertMessage(msg);
+                messages = sqliteHelper.getAllMessage();
                 myAdapter.notifyDataSetChanged();
             }
         });
