@@ -46,7 +46,7 @@ public class ChatRoomActivity extends AppCompatActivity  {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(ChatRoomActivity.this);
-                builder.setMessage("Do you want to delete this message? the selected row is "+position)
+                builder.setMessage("Do you want to delete this message? the selected row is " + position + " and the database ID:" + messages.get(position).getId())
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -55,6 +55,7 @@ public class ChatRoomActivity extends AppCompatActivity  {
                                 sqliteHelper.deleteMessage(messageToBeDeleted);
                                 messages = sqliteHelper.getAllMessage();
                                 myAdapter.notifyDataSetChanged();
+
                             }
                         });
                 builder.create().show();

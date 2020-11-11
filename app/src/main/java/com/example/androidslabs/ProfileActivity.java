@@ -23,6 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     Button goToChat;
+    Button goToWeatherActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,15 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToChatRoom = new Intent(ProfileActivity.this,ChatRoomActivity.class);
                 startActivity(goToChatRoom);
+            }
+        });
+
+        goToWeatherActivity = findViewById(R.id.goToWeatherActivity);
+        goToWeatherActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToW = new Intent(ProfileActivity.this,WeatherForecast.class);
+                startActivity(goToW);
             }
         });
     }
@@ -86,3 +96,4 @@ public class ProfileActivity extends AppCompatActivity {
         super.onStop();
     }
 }
+
