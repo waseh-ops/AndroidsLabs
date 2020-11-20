@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -119,6 +120,7 @@ public class WeatherForecast extends AppCompatActivity {
                     String imagefile = iconName+".png";
 
                     if(fileExistance(imagefile)){
+                        Log.i("weatherForeCast", "File found locally");
                         FileInputStream fis = null;
                         try {
                             fis = openFileInput(imagefile);
@@ -127,6 +129,7 @@ public class WeatherForecast extends AppCompatActivity {
                         }
                         image = BitmapFactory.decodeStream(fis);
                     }else{
+
                         String urlString = URL_DOWNLOAD_IMG+iconName+".png";
                         URL imgurl = new URL(urlString);
                         HttpURLConnection connection3 = (HttpURLConnection) imgurl.openConnection();
@@ -136,11 +139,13 @@ public class WeatherForecast extends AppCompatActivity {
                             image = BitmapFactory.decodeStream(connection3.getInputStream());
                         }
 
+                        Log.i("WeatherForecast", "File is Downloading");
                         FileOutputStream outputStream = openFileOutput( iconName + ".png", Context.MODE_PRIVATE);
                         image.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
                         outputStream.flush();
                         outputStream.close();
                         publishProgress(100);
+
                     }
                 }
 

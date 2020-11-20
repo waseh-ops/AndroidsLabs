@@ -25,6 +25,9 @@
     <string name="sendBtn">Send</string>
     <string name="inputBox">Chat here</string>
     <string name="receiveBtn">Receive</string>
+    <string name="Weather">Weather Forecast</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

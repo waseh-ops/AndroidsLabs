@@ -2,6 +2,9 @@ package com.example.androidslabs;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -13,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,6 +30,7 @@ public class ChatRoomActivity extends AppCompatActivity  {
     ArrayList<Message> messages;
     ListView messageList;
     MySqliteHelper sqliteHelper;
+    FrameLayout detailFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +47,9 @@ public class ChatRoomActivity extends AppCompatActivity  {
         MyAdapter myAdapter = new MyAdapter();
         messageList.setAdapter(myAdapter);
 
-        messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        messageList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(ChatRoomActivity.this);
                 builder.setMessage("Do you want to delete this message? the selected row is " + position + " and the database ID:" + messages.get(position).getId())
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -59,6 +64,7 @@ public class ChatRoomActivity extends AppCompatActivity  {
                             }
                         });
                 builder.create().show();
+                return true;
             }
         });
 
@@ -89,6 +95,32 @@ public class ChatRoomActivity extends AppCompatActivity  {
                 sqliteHelper.insertMessage(msg);
                 messages = sqliteHelper.getAllMessage();
                 myAdapter.notifyDataSetChanged();
+            }
+        });
+
+        detailFragment = findViewById(R.id.detailFragment);
+        boolean isTablet = detailFragment!=null;
+        messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(isTablet){
+                    DetailFragment detailFragment = new DetailFragment();
+                    Bundle dataToPass = new Bundle();
+                    Message msg = (Message)myAdapter.getItem(position);
+                    long msgId = msg.getId();
+                    boolean isSent = msg.isSent();
+                    dataToPass.putLong("message_id",msgId);
+                    dataToPass.putBoolean("isSent",isSent);
+                    detailFragment.setArguments(dataToPass);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.detailFragment,detailFragment);
+                    transaction.commit();
+                }else{
+
+
+
+                }
             }
         });
     }

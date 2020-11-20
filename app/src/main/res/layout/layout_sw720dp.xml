@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChatRoomActivity">
+    <RelativeLayout
+        android:id="@+id/leftPane"
+        android:layout_width="300dp"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/messageList"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_above="@id/userInputPane"
+
+            />
+        <LinearLayout
+            android:id="@+id/userInputPane"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/sendBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sendBtn"/>
+            <EditText
+                android:id="@+id/inputBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/inputBox"/>
+            <Button
+                android:id="@+id/receiveBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/receiveBtn"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+        <FrameLayout
+            android:id="@+id/detailFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/leftPane"
+            >
+
+        </FrameLayout>
+
+</RelativeLayout>
+
+
+
