@@ -10,6 +10,9 @@ public class EmptyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        getSupportFragmentManager().beginTransaction().add(new DetailFragment(),"DetailFragment").commit();
+        Bundle bundle=getIntent().getExtras();
+        DetailFragment detailFragment=new DetailFragment();
+        detailFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().add(R.id.load_detail_fragment_container,detailFragment,"DetailFragment").commit();
     }
 }

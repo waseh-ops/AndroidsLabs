@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,11 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class DetailFragment extends Fragment {
+
+    TextView MessageTxt, MessageId;
+    CheckBox isSentCb;
+
+    Button HideBtn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +69,27 @@ public class DetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false);
+        View root= inflater.inflate(R.layout.fragment_detail, container, false);
+
+        MessageId=root.findViewById(R.id.messageId);
+        MessageTxt=root.findViewById(R.id.message_txt);
+        isSentCb=root.findViewById(R.id.isSentCb);
+
+        assert getArguments() != null;
+        MessageId.setText(String.valueOf(getArguments().getLong("message_id")));
+        MessageTxt.setText(getArguments().getCharSequence("messagetext"));
+        isSentCb.setChecked(getArguments().getBoolean("isSent"));
+
+        HideBtn=root.findViewById(R.id.hide_btn);
+
+        HideBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChatRoomActivity chatRoomActivity= (ChatRoomActivity) getActivity();
+                Objects.requireNonNull(chatRoomActivity).getSupportFragmentManager().beginTransaction().remove(DetailFragment.this).commit();
+            }
+        });
+
+        return root;
     }
 }
