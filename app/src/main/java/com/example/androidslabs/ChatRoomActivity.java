@@ -108,23 +108,26 @@ public class ChatRoomActivity extends AppCompatActivity  {
                     Message msg = (Message)myAdapter.getItem(position);
                     long msgId = msg.getId();
                     boolean isSent = msg.isSent();
+                    String MessageTxt=msg.getContent();
                     dataToPass.putLong("message_id",msgId);
                     dataToPass.putBoolean("isSent",isSent);
+                    dataToPass.putString("messagetext",MessageTxt);
                     detailFragment.setArguments(dataToPass);
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.replace(R.id.detailFragment,detailFragment);
                     transaction.commit();
                 }else{
-                    DetailFragment detailFragment = new DetailFragment();
                     Bundle dataToPass = new Bundle();
                     Message msg = (Message)myAdapter.getItem(position);
                     long msgId = msg.getId();
                     boolean isSent = msg.isSent();
+                    String MessageTxt=msg.getContent();
                     dataToPass.putLong("message_id",msgId);
                     dataToPass.putBoolean("isSent",isSent);
-                    detailFragment.setArguments(dataToPass);
+                    dataToPass.putString("messagetext",MessageTxt);
                     Intent intent =new Intent(ChatRoomActivity.this, EmptyActivity.class);
+                    intent.putExtras(dataToPass);
                     startActivity(intent);
                 }
             }
