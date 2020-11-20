@@ -2,17 +2,16 @@ package com.example.androidslabs;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -117,9 +116,16 @@ public class ChatRoomActivity extends AppCompatActivity  {
                     transaction.replace(R.id.detailFragment,detailFragment);
                     transaction.commit();
                 }else{
-
-
-
+                    DetailFragment detailFragment = new DetailFragment();
+                    Bundle dataToPass = new Bundle();
+                    Message msg = (Message)myAdapter.getItem(position);
+                    long msgId = msg.getId();
+                    boolean isSent = msg.isSent();
+                    dataToPass.putLong("message_id",msgId);
+                    dataToPass.putBoolean("isSent",isSent);
+                    detailFragment.setArguments(dataToPass);
+                    Intent intent =new Intent(ChatRoomActivity.this, EmptyActivity.class);
+                    startActivity(intent);
                 }
             }
         });
