@@ -61,7 +61,12 @@ public class ChatRoomActivity extends AppCompatActivity  {
                                 myAdapter.notifyDataSetChanged();
 
                             }
-                        });
+                        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
                 builder.create().show();
                 return true;
             }
