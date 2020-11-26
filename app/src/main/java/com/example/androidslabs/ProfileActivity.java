@@ -24,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     Button goToChat;
     Button goToWeatherActivity;
+    Button goToToolbarPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,15 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(goToW);
             }
         });
+
+        goToToolbarPage=findViewById(R.id.goToToolbarPage);
+        goToToolbarPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ToolbarPageIntent=new Intent(ProfileActivity.this, TestToolbar.class);
+                startActivityForResult(ToolbarPageIntent,500);
+            }
+        });
     }
 
     private void dispatchTakePictureIntent() {
@@ -81,6 +91,10 @@ public class ProfileActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imgBtn.setImageBitmap(imageBitmap);
+        }
+
+        if(requestCode==500){
+            finish();
         }
 
     }

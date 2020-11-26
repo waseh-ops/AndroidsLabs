@@ -27,11 +27,12 @@
     <string name="inputBox">Discutez ici</string>
     <string name="receiveBtn">Recevoir</string>
     <string name="Weather">Prévisions météorologiques</string>
-
-
-
-
-
+    <string name="hello_blank_fragment" translatable="false">Bonjour fragment vierge</string>
+    <string name="go_to_toolbar_page">aller à la page de la barre d\'outils</string>
+    <string name="choice_1">Choix 1</string>
+    <string name="choice_2">Choix 2</string>
+    <string name="choice_3">Choix 3</string>
+    <string name="settings">" À propos"</string>
 
 
 </resources>
